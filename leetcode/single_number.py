@@ -18,6 +18,19 @@ def single_number(nums):
             return num
     return -1
 
-print(single_number([2,2,1])) # 1
-print(single_number([4,1,2,1,2])) # 4
-print(single_number([1])) # 1
+# print(single_number([2,2,1])) # 1
+# print(single_number([4,1,2,1,2])) # 4
+# print(single_number([1])) # 1
+
+def single_number_constant_space(nums):
+    # safety check for single item in nums
+    
+    # order nums in place
+    # loop through each i, num in enumerate nums
+        # if nums[i] != nums[i-1] or nums[i] != nums[i + 1]:
+            # return num
+    return -1
+
+print(single_number_constant_space([2,2,1])) # 1
+print(single_number_constant_space([4,1,2,1,2])) # 4
+print(single_number_constant_space([1])) # 1
