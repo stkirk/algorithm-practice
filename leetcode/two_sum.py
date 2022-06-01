@@ -4,6 +4,12 @@
 # return answer in any order
 
 def two_sum(nums, target):
+    # init dict with complement to num as key, index of num as value
+
+    # loop through nums
+        # check if num is in dict
+            # if it is, make sure indicies aren't same (no reuse)
+            # not reused, return index of num and index of complement
     return []
 
 print(two_sum([2,7,11,15], 9)) # [0,1]
