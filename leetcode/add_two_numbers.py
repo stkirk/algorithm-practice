@@ -11,41 +11,78 @@ class ListNode:
 
 # pure linked list solution
 def add_two_numbers(l1, l2):
+    # init dummy head
+    dummy = ListNode()
+    # init cur (return list) to dummy
+    cur = dummy
+
     # init cur_l1 and cur_l2
+    cur_l1 = l1
+    cur_l2 = l2
     # init carry digit
+    carry = 0
 
-    # init sum_list = None
-    # cur_sum_list = None
-
-    # loop while cur_l1 or cur_l2
-        # safety check if !cur_l1
-            # set curl1 to 0
-        # safety check if !cur_l2
-            # set cur_l2 to 0
+    # loop while cur_l1 or cur_l2 or carry
+    while cur_l1 or cur_l2 or carry:
+        # set values to add with safetly check
+        val1 = cur_l1.val if cur_l1 else 0
+        val2 = cur_l2.val if cur_l2 else 0
         
-        # place_total = cur_l1 + cur_l2
+        # place_total = cur_l1 + cur_l2 + carry
+        place_total = val1 + val2 + carry
+
         # if place_total > 9:
             # carry_digit = 1
             # place total -= 10
 
-        # if no sum_list
-            # sum_list = ListNode(place_total)
-            # cur_sum_list = sum_list
-        # else:
-            # cur_sum_list.next = ListNode(place_total + carry_digit)
+        # cur.next = ListNode(place_total)
+
+        #update pointers
+        # cur is cur.next
+        # cur_l1 = cur_l1.next
+        # cur_l2 = cur_l2.next
 
         
-    return []
+    return dummy.next
 
 def add_two_numbers_shortcut(l1, l2):
     # init lists for l1 and l2
+    list_one = []
+    list_two = []
     # loop through l1 and l2 and append values to list
+    cur_l1 = l1
+    cur_l2 = l2
+    while cur_l1:
+        list_one.append(cur_l1.val)
+        cur_l1 = cur_l1.next
+    while cur_l2:
+        list_two.append(cur_l2.val)
+        cur_l2 = cur_l2.next
     # reverse both list, turn each into integers
+    list_one.reverse()
+    list_two.reverse()
+
     # add integers together
-    # typecase to string
+    num_1 = int("".join(str(i) for i in list_one))
+    num_2 = int("".join(str(i) for i in list_two))
+    sum = str(num_1 + num_2)
     # split into new reversed list
+    sum_string_list = sum.split()
+    sum_int_list = [int(i) for i in sum_string_list]
+    sum_int_list.reverse()
     # loop through list creating nodes as you go
-    # return head
+    head = None
+    cur = None
+    for i in sum_int_list:
+        if head == None:
+            head = ListNode(i)
+            cur = head
+        else:
+            new_node = ListNode(i)
+            cur.next = new_node
+            cur = cur.next
+
+    return head
 
 n3 = ListNode(3)
 n2 = ListNode(4, n3)
@@ -61,3 +98,5 @@ def print_linked_list(node):
         node_list.append(current_node.val)
         current_node = current_node.next
     print(node_list)
+
+print_linked_list(add_two_numbers_shortcut(n1, n4))
