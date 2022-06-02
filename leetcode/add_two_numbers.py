@@ -12,9 +12,17 @@ class ListNode:
 def add_two_numbers(l1, l2):
     return []
 
-n3 = ListNode(2)
+n3 = ListNode(3)
 n2 = ListNode(4, n3)
 n1 = ListNode(2, n2)
 n6 = ListNode(4)
 n5 = ListNode(6, n6)
 n4 = ListNode(5, n5)
+
+def print_linked_list(node):
+    current_node = node
+    node_list = []
+    while current_node:
+        node_list.append(current_node.val)
+        current_node = current_node.next
+    print(node_list)
