@@ -15,7 +15,6 @@ def add_two_numbers(l1, l2):
     dummy = ListNode()
     # init cur (return list) to dummy
     cur = dummy
-
     # init cur_l1 and cur_l2
     cur_l1 = l1
     cur_l2 = l2
@@ -30,17 +29,15 @@ def add_two_numbers(l1, l2):
         
         # place_total = cur_l1 + cur_l2 + carry
         place_total = val1 + val2 + carry
-
-        # if place_total > 9:
-            # carry_digit = 1
-            # place total -= 10
-
-        # cur.next = ListNode(place_total)
+        carry = place_total // 10
+        place_total = place_total % 10
+        # add new node
+        cur.next = ListNode(place_total)
 
         #update pointers
-        # cur is cur.next
-        # cur_l1 = cur_l1.next
-        # cur_l2 = cur_l2.next
+        cur = cur.next
+        cur_l1 = cur_l1.next if cur_l1 else None
+        cur_l2 = cur_l2.next if cur_l2 else None
 
         
     return dummy.next
@@ -100,3 +97,4 @@ def print_linked_list(node):
     print(node_list)
 
 print_linked_list(add_two_numbers_shortcut(n1, n4))
+print_linked_list(add_two_numbers(n1, n4))
