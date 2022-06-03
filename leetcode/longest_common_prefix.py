@@ -5,15 +5,13 @@ def longest_common_prefix(strs):
     # init lcp empty string to return
     lcp = ""
 
-    # loop through strs
-        # if first string set to lcp
-        # else:
-            # compare new string to lcp letter by letter with loop through min of lengths of the two
-                # init empty string for new_lcp
-                # if lcp[j] != strs[i][j]:
-                    # lcp = new_lcp
-                # else:
-                    # new_lcp += lcp[j]
+    # loop through range of len of first string
+        # compare all subsequent strings in strs to strs[0]
+        # loop through all str in strs
+            # if i is out of range of str or str[i] != strs[0][i]
+                # we have an lcp
+            # all other scenarios add strs[0][i] to lcp
+    
     return lcp 
 
 print(longest_common_prefix(["flower","flow","flight"])) # "fl"
