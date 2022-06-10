@@ -10,39 +10,53 @@ def is_valid_brackets(s):
     # loop through bracket in s
     for bracket in s:
         # if bracket is an open
-        if bracket == '(' or '[' or '{':
-            # add to paren list
+        if bracket == '(' or bracket == '[' or bracket == '{':
+            # add to brackets list
             brackets.append(bracket)
         # else assume its a close bracket
+        else:
             # determine current open bracket as last index in brackets
-            # if bracket is ')'
-                # edge case if brackets is empty
-                    # return False
-                # elif current bracket is '(':
-                    # pop current open bracket
-                    # brackets.pop()
-                # else current bracket is wrong type return False
+            current_open_bracket = brackets[-1]
 
-            # elif bracket is ']'
+            if bracket == ')':
                 # edge case if brackets is empty
-                    # return False
-                # elif current bracket is '[':
+                if len(brackets) == 0:
+                    return False
+                elif current_open_bracket == '(':
                     # pop current open bracket
-                    # brackets.pop()
+                    brackets.pop()
                 # else current bracket is wrong type return False
+                else:
+                    return False
+
+            elif bracket == ']':
+                # edge case if brackets is empty
+                if len(brackets) == 0:
+                    return False
+                elif current_open_bracket == '[':
+                    # pop current open bracket
+                    brackets.pop()
+                # else current bracket is wrong type return False
+                else:
+                    return False
 
             # else bracket is '}'
                 # edge case if brackets is empty
-                    # return False
-                # elif current bracket is '{':
+                if len(brackets) == 0:
+                    return False
+                elif current_open_bracket == '{':
                     # pop current open bracket
-                    # brackets.pop()
+                    brackets.pop()
                 # else current bracket is wrong type return False
+                else:
+                    return False
 
-    # if len of all lists is 0            
-    return True
-    # else return False
+    # if len of brackets is 0
+    if len(brackets) == 0:            
+        return True
+    else:
+        return False
 
-print(is_valid_brackets("()")) # True
+# print(is_valid_brackets("()")) # True
 print(is_valid_brackets("()[]{}")) # True
-print(is_valid_brackets("(]")) # False
+# print(is_valid_brackets("(]")) # False
