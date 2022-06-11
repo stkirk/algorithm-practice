@@ -5,6 +5,9 @@
 # Edge case: lists could be different lengths
 
 # Definition for singly-linked list.
+from types import new_class
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -20,25 +23,43 @@ def print_list(node):
 
 def merge_two_lists(list1, list2):
     # init pointers for current nodes in l1 and l2
+    curl1 = list1
+    curl2 = list2
     # init merged list head to return as None
-    # init pointer for merged list as None
+    new_head = None
+    # init pointer for merged list as dummy node
+    merged_cur = ListNode()
 
-    # while loop is there are curs in l1 or l2
-        # if l1.val <= l2.val:
-            # if merged list head is None:
+    # while loop if there are curs in l1 and l2
+    while curl1 and curl2:
+        if curl1.val <= curl2.val:
+            if new_head is None:
                 # set merged list head to l1
+                new_head = ListNode()
+                new_head.next = curl1
             # set merged list cur.next to l1
+            merged_cur.next = curl1
             # set merged list cur to l1
+            merged_cur = curl1
             # move cur1 pointer to cur1.next
+            curl1 = curl1.next
 
         # else curl2.val is less than curl1.val
-            #if merged list head is None:
+        else:
+            if new_head is None:
                 # set merge list head to curl2
+                new_head = ListNode()
+                new_head.next = curl2
             # set merged list cur.next to l2
+            merged_cur.next = curl2
             # set merged list cur to l2
-            # move cur1 to cur1.next
+            merged_cur = curl2
+            # move cur2 to cur2.next
+            curl2 = curl2.next
+    # Now either both lists are the same length and new_head.next can be returned
+    # or we need conditionals if lists were different lengths to just loop through them and add to the merged list
 
-    return new_head
+    return new_head.next
 
 # test case linked list nodes
 l11 = ListNode(1)
