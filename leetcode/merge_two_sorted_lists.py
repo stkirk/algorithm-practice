@@ -58,6 +58,12 @@ def merge_two_lists(list1, list2):
             curl2 = curl2.next
     # Now either both lists are the same length and new_head.next can be returned
     # or we need conditionals if lists were different lengths to just loop through them and add to the merged list
+    # if curl1:
+        # while loop through rest of list 2
+            # tack curl1 onto merged list
+    # if curl2:
+        # while loop through rest of list 2
+            # tack curl2 onto merged list
 
     return new_head.next
 
