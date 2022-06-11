@@ -26,14 +26,14 @@ def merge_two_lists(list1, list2):
     curl1 = list1
     curl2 = list2
     # init merged list head to return as None
-    new_head = None
+    new_head = ListNode('dummy')
     # init pointer for merged list as dummy node
     merged_cur = ListNode()
 
     # while loop if there are curs in l1 and l2
     while curl1 and curl2:
         if curl1.val <= curl2.val:
-            if new_head is None:
+            if new_head.val == 'dummy':
                 # set merged list head to l1
                 new_head = ListNode()
                 new_head.next = curl1
@@ -46,7 +46,7 @@ def merge_two_lists(list1, list2):
 
         # else curl2.val is less than curl1.val
         else:
-            if new_head is None:
+            if new_head.val == 'dummy':
                 # set merge list head to curl2
                 new_head = ListNode()
                 new_head.next = curl2
@@ -58,12 +58,28 @@ def merge_two_lists(list1, list2):
             curl2 = curl2.next
     # Now either both lists are the same length and new_head.next can be returned
     # or we need conditionals if lists were different lengths to just loop through them and add to the merged list
-    # if curl1:
+    if curl1:
         # while loop through rest of list 2
+        while curl1:
+            if new_head.val == 'dummy':
+                # set merged list head to l1
+                new_head = ListNode()
+                new_head.next = curl1
             # tack curl1 onto merged list
-    # if curl2:
+            merged_cur.next = curl1
+            merged_cur = curl1
+            curl1 = curl1.next
+    if curl2:
         # while loop through rest of list 2
+        while curl2:
+            if new_head.val == 'dummy':
+                # set merged list head to l2
+                new_head = ListNode()
+                new_head.next = curl2
             # tack curl2 onto merged list
+            merged_cur.next = curl2
+            merged_cur = curl2
+            curl2 = curl2.next
 
     return new_head.next
 
@@ -80,4 +96,6 @@ l21.next = l22
 l23 = ListNode(4)
 l22.next = l23
 
-print_list(merge_two_lists(l11, l21))
+print_list(merge_two_lists(l11, l21)) # [1,1,2,3,4,4]
+print_list(merge_two_lists(None, None)) # []
+print_list(merge_two_lists(None, l23)) # [4]
