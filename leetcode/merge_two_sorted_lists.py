@@ -18,6 +18,7 @@ def print_list(node):
     print(node_list)
 
 def merge_two_lists(list1, list2):
+
     return list1
 
 # test case linked list nodes
@@ -32,3 +33,5 @@ l22 = ListNode(3)
 l21.next = l22
 l23 = ListNode(4)
 l22.next = l23
+
+print_list(merge_two_lists(l11, l21))
