@@ -6,6 +6,15 @@
 # not a multiple of either print i
 
 def fizz_buzz(n):
+    # loop through range 1, n+1
+        # if i mod 3 == 0 and i mod 5 == 0
+            # print("FizzBuzz")
+        # elif i mod 3 == 0 and i mod 5 != 0
+            # print("Fizz")
+        # elif i mod 3 != 0 and i mod 5 == 0
+            # print("Buzz")
+        #else:
+            # print(i)
     print(n)
 
 fizz_buzz(15)
