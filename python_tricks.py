@@ -36,7 +36,7 @@ print(duplicates.count(1)) # number 1 appears 4 times
 
 # which number appears the most times in a list --> returns first occurence if theres a tie
 most_repeated = max(set(duplicates), key=duplicates.count)
-print(most_repeated)
+print('most repeated', most_repeated)
 
 # Pass in any amount of parameters to a function
 def multiple_params(*numbers):
